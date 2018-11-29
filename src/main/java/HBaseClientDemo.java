@@ -12,8 +12,9 @@ import java.util.Set;
 
 public class HBaseClientDemo {
 
-    private static Connection conn =null;
-    private static Configuration conf=null;
+    private static Connection conn = null;
+    private static Configuration conf = null;
+
     public static void main(String[] args) throws IOException {
         TableName tableName = TableName.valueOf("dev_cif:filepattern");
 
@@ -31,11 +32,9 @@ public class HBaseClientDemo {
         Scan scan = new Scan();
         ResultScanner scanner1 = table.getScanner(scan);
 
-        for (Result scn :scanner1){
-            System.out.println("Hbase table scan-->"+scn);
-            System.out.println("Key **>"+table.get(new Get(Bytes.toBytes("mo_.*_(fx|di)_.*_cddm.csv.*"))));
-
-        }
+        for (Result scn : scanner1) {
+            System.out.println("Hbase table scan-->" + scn);
+            System.out.println("Key **>" + table.get(new Get(Bytes.toBytes("mo_.*_(fx|di)_.*_cddm.csv.*"))));
 
 
 /*        Put p = new Put(Bytes.toBytes("AAPL10232015"));
@@ -44,5 +43,6 @@ public class HBaseClientDemo {
 
         Result r = table.get(new Get(Bytes.toBytes("AAPL10232015")));
         System.out.println(r);*/
+        }
     }
 }
